@@ -1,18 +1,18 @@
 ﻿using System;
 using Zenject;
-using UnityEngine;
 
 namespace Lessons.Architecture.PM
 {
     public sealed class PlayerStatsAdapter : IInitializable, IDisposable
     { 
         private readonly CharacterInfo _characterInfo;
-        private readonly PlayerPopup _playerPopup;
 
-        public PlayerStatsAdapter(CharacterInfo characterInfo, PlayerPopup playerPopup)
+        private readonly StatsInfoView _statsInfoView;
+
+        public PlayerStatsAdapter(CharacterInfo characterInfo, StatsInfoView statsInfoView)
         {
             _characterInfo = characterInfo;
-            _playerPopup = playerPopup;
+            _statsInfoView = statsInfoView;
         }
 
         public void Initialize()
@@ -24,16 +24,16 @@ namespace Lessons.Architecture.PM
 
         private void OnStatRemovedHandler(CharacterStat stat)
         {
-            _playerPopup.ClearStats();
+            _statsInfoView.ClearStats();
             foreach (CharacterStat characterStat in _characterInfo.GetStats())
             {
-                _playerPopup.AddPlayerStat($"{characterStat.Name}:", characterStat.Value.ToString());
+                _statsInfoView.AddPlayerStat($"{characterStat.Name}:", characterStat.Value.ToString());
             }
         }
 
         private void OnStatAddedHandler(CharacterStat stat)
         {
-            _playerPopup.AddPlayerStat($"{stat.Name}:", stat.Value.ToString());
+            _statsInfoView.AddPlayerStat($"{stat.Name}:", stat.Value.ToString());
         }
 
         public void Dispose()

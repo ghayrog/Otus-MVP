@@ -18,7 +18,7 @@ namespace Lessons.Architecture.PM
         [Button]
         private void AddPlayerStat()
         { 
-            _popup.AddPlayerStat(_description, _value);
+            _popup.StatsInfo.AddPlayerStat(_description, _value);
         }
 
         [Button]

@@ -3,15 +3,22 @@ using Zenject;
 
 namespace Lessons.Architecture.PM
 {
-    public sealed class PlayerPopupButtonsAdapter : IInitializable, IDisposable
+    public sealed class PlayerPopupAdapter : IInitializable, IDisposable
     {
-        private readonly PlayerLevel _playerLevel;
         private readonly PlayerPopup _playerPopup;
 
-        public PlayerPopupButtonsAdapter(PlayerPopup playerPopup, PlayerLevel playerLevel)
+        private readonly PlayerLevel _playerLevel;
+
+        private readonly UserInfoAdapter _userInfoAdapter;
+
+        private readonly PlayerStatsAdapter _playerStatsAdapter;
+
+        public PlayerPopupAdapter(UserInfo userInfo, PlayerLevel playerLevel, CharacterInfo characterInfo, PlayerPopup playerPopup)
         {
-            _playerPopup = playerPopup;
             _playerLevel = playerLevel;
+            _playerPopup = playerPopup;
+            _userInfoAdapter = new UserInfoAdapter(userInfo, _playerPopup.UserInfo, playerLevel);
+            _playerStatsAdapter = new PlayerStatsAdapter(characterInfo, _playerPopup.StatsInfo);
         }
 
         public void Initialize()
@@ -22,6 +29,9 @@ namespace Lessons.Architecture.PM
             _playerLevel.OnExperienceChanged += OnExperienceChangeHandler;
             _playerLevel.OnLevelUp += OnLevelUpHandler;
             OnExperienceChangeHandler(_playerLevel.CurrentExperience);
+
+            _userInfoAdapter.Initialize();
+            _playerStatsAdapter.Initialize();
         }
 
         private void OnLevelUpHandler()
@@ -60,6 +70,8 @@ namespace Lessons.Architecture.PM
             _playerLevel.OnExperienceChanged -= OnExperienceChangeHandler;
             _playerLevel.OnLevelUp -= OnLevelUpHandler;
 
+            _userInfoAdapter.Dispose();
+            _playerStatsAdapter.Dispose();
         }
     }
 }

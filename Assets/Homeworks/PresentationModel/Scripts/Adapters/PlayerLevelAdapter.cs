@@ -6,12 +6,12 @@ namespace Lessons.Architecture.PM
     public sealed class PlayerLevelAdapter : IInitializable, IDisposable
     {
         private readonly PlayerLevel _playerLevel;
-        private readonly PlayerPopup _playerPopup;
+        private readonly PlayerLevelView _playerLevelView;
 
-        public PlayerLevelAdapter(PlayerLevel playerLevel, PlayerPopup playerPopup)
+        public PlayerLevelAdapter(PlayerLevel playerLevel, PlayerLevelView playerLevelView)
         {
             _playerLevel = playerLevel;
-            _playerPopup = playerPopup;
+            _playerLevelView = playerLevelView;
         }
 
         public void Initialize()
@@ -25,13 +25,13 @@ namespace Lessons.Architecture.PM
         private void OnExperienceChangeHandler(int experience)
         {
             float fillAmount = (float)experience / _playerLevel.RequiredExperience;
-            _playerPopup.ExperienceProgressBar.SetProgress($"XP: {experience}/{_playerLevel.RequiredExperience}", fillAmount);
+            _playerLevelView.ExperienceProgressBar.SetProgress($"XP: {experience}/{_playerLevel.RequiredExperience}", fillAmount);
         }
 
         private void OnLevelUpHandler()
         {
             OnExperienceChangeHandler(_playerLevel.CurrentExperience);
-            _playerPopup.LevelText.SetText($"Level: {_playerLevel.CurrentLevel}");
+            _playerLevelView.LevelText.SetText($"Level: {_playerLevel.CurrentLevel}");
         }
 
         public void Dispose()

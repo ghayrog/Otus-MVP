@@ -698,25 +698,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4024163ca497a1d448e5c689a50db96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <NameText>k__BackingField:
-    _text: {fileID: 5872152453431208242}
-  <LevelText>k__BackingField:
-    _text: {fileID: 5872152453046180295}
-  <AvatarImage>k__BackingField:
-    _image: {fileID: 5872152452288294571}
-  <DescriptionText>k__BackingField:
-    _text: {fileID: 5872152453201890728}
-  <ExperienceProgressBar>k__BackingField:
-    _text: {fileID: 5872152453087283720}
-    _progressImage: {fileID: 5872152453256092278}
-    _notFilledSprite: {fileID: 21300000, guid: c9ea6483ca2494ae892f993fec2cb4a6, type: 3}
-    _filledSprite: {fileID: 21300000, guid: ebca5e0b7178447bea6a7fe825585b0a, type: 3}
-  _leftStackPanel:
-    _stackElementPrefab: {fileID: 8699115182345960500, guid: 460246c3f1953ca44b026bd067155487, type: 3}
-    _parentScrollViewContent: {fileID: 5872152451944132242}
-  _rightStackPanel:
-    _stackElementPrefab: {fileID: 8699115182345960500, guid: 460246c3f1953ca44b026bd067155487, type: 3}
-    _parentScrollViewContent: {fileID: 5872152452380726104}
+  <UserInfo>k__BackingField:
+    <NameText>k__BackingField:
+      _text: {fileID: 5872152453431208242}
+    <AvatarImage>k__BackingField:
+      _image: {fileID: 5872152452288294571}
+    <DescriptionText>k__BackingField:
+      _text: {fileID: 5872152453201890728}
+    <PlayerLevel>k__BackingField:
+      <LevelText>k__BackingField:
+        _text: {fileID: 5872152453046180295}
+      <ExperienceProgressBar>k__BackingField:
+        _text: {fileID: 5872152453087283720}
+        _progressImage: {fileID: 5872152453256092278}
+        _notFilledSprite: {fileID: 21300000, guid: c9ea6483ca2494ae892f993fec2cb4a6, type: 3}
+        _filledSprite: {fileID: 21300000, guid: ebca5e0b7178447bea6a7fe825585b0a, type: 3}
+  <StatsInfo>k__BackingField:
+    _leftStackPanel:
+      _stackElementPrefab: {fileID: 8699115182345960500, guid: 460246c3f1953ca44b026bd067155487, type: 3}
+      _parentScrollViewContent: {fileID: 5872152451944132242}
+    _rightStackPanel:
+      _stackElementPrefab: {fileID: 8699115182345960500, guid: 460246c3f1953ca44b026bd067155487, type: 3}
+      _parentScrollViewContent: {fileID: 5872152452380726104}
   <CloseButton>k__BackingField: {fileID: 5872152452081655286}
   <LevelUpButton>k__BackingField:
     <Button>k__BackingField: {fileID: 5872152453351296526}
